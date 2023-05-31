@@ -10,15 +10,8 @@ export class App extends Component {
     filter: '',
   };
 
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-
-    const { name, number, contacts } = this.state;
+  handleSubmit = (name, number) => {
+    const { contacts } = this.state;
 
     if (
       contacts.some(
@@ -60,15 +53,12 @@ export class App extends Component {
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const { filter } = this.state;
 
     return (
       <div style={{ marginLeft: 40 }}>
         <h1>Phonebook</h1>
-        <ContactForm
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
+        <ContactForm handleSubmit={this.handleSubmit} />
         <h2>Contacts</h2>
         <Filter filter={filter} handleChange={this.handleFilterChange} />
         <ContactList
