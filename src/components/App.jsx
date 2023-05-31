@@ -8,8 +8,6 @@ export class App extends Component {
   state = {
     contacts: [],
     filter: '',
-    name: '',
-    number: '',
   };
 
   handleChange = event => {
@@ -39,8 +37,6 @@ export class App extends Component {
 
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
-      name: '',
-      number: '',
     }));
   };
 
@@ -64,14 +60,12 @@ export class App extends Component {
   };
 
   render() {
-    const { name, number, filter } = this.state;
+    const { contacts, filter } = this.state;
 
     return (
       <div style={{ marginLeft: 40 }}>
         <h1>Phonebook</h1>
         <ContactForm
-          name={name}
-          number={number}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
